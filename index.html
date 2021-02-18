@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>FAQ Accordion Card</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kumbh+Sans"><!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+.attribution { font-size: 15px; text-align: center; }
+.attribution a {
+	color: hsl(351.7, 89%, 46.3%);
+}
+html {
+    height: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: linear-gradient(hsl(273, 75%, 66%), hsl(240, 73%, 65%));
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 1440px;
+    margin: 0 auto;
+    font-family: 'Kumbh Sans';
+    font-size: 12px;
+}
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 80px;
+    position: relative;
+}
+.flex {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 150px auto 25px auto;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.445);
+}
+.flex-items {
+    width: 50%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    height: 450px;
+    padding: 40px 0 0 0;
+}
+.bg, .box, .woman {
+    position: absolute;
+}
+.woman {
+    left: -80px;
+    top: 70px;
+}
+.bg {
+    left: -580px;
+    top: -280px;
+}
+.box {
+    top: 200px;
+    left: -90px;
+    z-index: 6;
+}
+.faq-list {
+    padding: 20px 25px 0 25px;
+    align-self: center;
+    height: 400px;
+}
+.qa {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.116);
+    cursor: pointer;
+    font-size: 14px;
+}
+.faq {
+    font-weight: 700;
+    font-size: 25px;
+    padding-bottom: 15px;
+}
+.question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 2;
+    padding: 6px 0;
+}
+.answer {
+    display: none;
+    opacity: 0;
+    transition: 1s;
+    padding-bottom: 10px;
+    line-height: 1.2;
+}
+.qa:hover {
+	color: hsl(323.4, 84.3%, 50%);
+}
+.answer.fade {
+    opacity: 1;
+}
+.weight {
+    font-weight: bolder;
+    color: black;
+    transition: .5s;
+}
+.arrowup {
+    transform: rotate(180deg);
+}
+@media only screen and (max-width: 700px) {
+    body {
+        max-width: 700px;
+    }
+    .main {
+        padding: 0 50px;
+    }
+    .flex {
+        display: block;
+    }
+    .flex-items:nth-child(2) {
+        height: 300px;
+    }
+    .flex-items {
+        width: 90%;
+        margin: 0 auto;
+        overflow: visible;
+    }
+    .flex-items.flex-bg {
+        height: 50px;
+    }
+    .bg {
+        left: 48.5%;
+        top: 52%;
+        transform: translate(-50%, -50%);
+    }
+    .woman {
+        top: -10%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+    }
+    .faq {
+        text-align: center;
+    }
+    .faq-list {
+        height: 430px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+@media only screen and (max-width: 400px) {
+    body {
+        max-width: 400px;
+    }
+    .main {
+        padding: 0 20px;
+    }
+    .flex-items.flex-bg {
+        height: 40px;
+    }
+    .bg {
+        top: 30%;
+    }
+    .woman {
+        top: -3%;
+    }
+    .bg img, .woman img {
+        width: 110px;
+    }
+    .faq {
+        font-size: 13px;
+    }
+    .qa {
+        font-size: 13px;
+    }
+}
+img:hover {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 1.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+</style>
+</head>
+<body>
+  <div class="main">
+    <div class="flex">
+      <div class="box" id="box" style="display: block;"><img src="images/illustration-box-desktop.svg" alt="box"></div>
+      <div class="flex-items flex-bg">
+        <div class="bg"><img id="bg" src="images/bg-pattern-desktop.svg" alt="bg"></div>
+        <div class="woman"><img id="woman" src="images/illustration-woman-online-desktop.svg" alt="woman"></div>
+      </div>
+      <div class="flex-items faq-list">
+        <div class="faq">FAQ</div>
+        <div class="qa">
+          <div class="question">
+            <div>How many team members can I invite?</div>
+            <div class="arrow"><img src="images/icon-arrow-down.svg" alt="arrow"></div>
+          </div>
+          <div class="answer" style="display: none;">You can invite up to 2 additional users on the Free plan. There is no limit on 
+          team members for the Premium plan.</div>
+        </div>
+        <div class="qa">
+          <div class="question">
+            <div>What is the maximum file upload size?</div>
+            <div class="arrow"><img src="images/icon-arrow-down.svg" alt="arrow"></div>
+          </div>
+          <div class="answer" style="display: none;">No more than 2GB. All files in your account must fit your allotted storage space.</div>
+        </div>
+        <div class="qa">
+          <div class="question">
+            <div>How do I reset my password?</div>
+            <div class="arrow"><img src="images/icon-arrow-down.svg" alt="arrow"></div>
+          </div>
+          <div class="answer" style="display: none;">Click “Forgot password” from the login page or “Change password” from your profile page.
+          A reset link will be emailed to you.</div>
+        </div>
+        <div class="qa">
+          <div class="question">
+            <div>Can I cancel my subscription?</div>
+            <div class="arrow"><img src="images/icon-arrow-down.svg" alt="arrow"></div>
+          </div>
+          <div class="answer" style="display: none;">Yes! Send us a message and we’ll process your request no questions asked.</div>
+        </div>
+        <div class="qa">
+          <div class="question">
+            <div>Do you provide additional support?</div>
+            <div class="arrow"><img src="images/icon-arrow-down.svg" alt="arrow"></div>
+          </div>
+          <div class="answer" style="display: none;">Chat and email support is available 24/7. Phone lines are open during normal business hours.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/shuhzz">Shubham Yadav</a>.
+  </div>
+
+<script >
+
+// Check screen and change images source
+checkScreen(); // First load
+
+window.onresize = function(event) {
+    checkScreen();
+}
+
+function checkScreen() {
+    var platform = "desktop";
+    var boxDisplay = "block";
+
+    if (window.matchMedia("(max-width: 700px)").matches) {
+        platform = "mobile";
+        boxDisplay = "none";
+        changeImg(platform, boxDisplay);
+    }
+    else {
+        platform = "desktop";
+        changeImg(platform, boxDisplay);
+    }
+}
+
+function changeImg(n, e) {
+    var bgS = document.getElementById("bg");
+    var womanS = document.getElementById("woman");
+    var boxS = document.getElementById("box");
+
+    bgS.src = "images/bg-pattern-" + n + ".svg";
+    womanS.src = "images/illustration-woman-online-" + n + ".svg";
+    boxS.style.display = e;
+}
+
+// Show - hide content
+var questionClick = document.getElementsByClassName("question");
+var displayAnswer = document.getElementsByClassName("answer");
+var arrowChange = document.getElementsByClassName("arrow");
+
+showHidecontent(); // Run
+
+function showHidecontent() {
+    for (let i = 0; i < questionClick.length; i++) {
+        questionClick[i].addEventListener("click", function() { // Add event where need to click
+            if (displayAnswer[i].style.display === "block") { // Check content
+                displayAnswer[i].style.display = "none";
+                removeClass(i);
+                return;
+            }
+            for (let j = 0; j < displayAnswer.length; j++) { // If open a new content, the other will closed
+                displayAnswer[j].style.display = "none";
+                removeClass(j);
+            }
+            if (displayAnswer[i].style.display === "none") { // Check content
+                addClass(i);
+                displayAnswer[i].style.display = "block";
+            }
+        });
+    }
+}
+
+function removeClass(n) { // Remove class
+    displayAnswer[n].classList.remove('fade');
+    questionClick[n].classList.remove('weight');
+    arrowChange[n].classList.remove('arrowup');
+}
+
+function addClass(n) { // Add class
+    questionClick[n].classList.add('weight');
+    arrowChange[n].classList.add('arrowup');
+    var delay = 300;
+    var fadeAnimation = setTimeout(function(){ // Add delay to create a fade animation
+        displayAnswer[n].classList.add('fade');
+    }, delay);
+}
+</script>
+</body></html>
